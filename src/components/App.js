@@ -6,14 +6,16 @@ class App extends Component {
   state = {
     count: 0,
     animateType: "",
-    startAnimateUp: ""
+    startAnimateUp: "",
+    updating: false
   };
   increamentHandler = () => {
-    if (this.state.count < 100) {
+    if (this.state.count < 100 && !this.state.updating) {
       this.setState(
         {
           animateType: "",
-          startAnimateUp: ""
+          startAnimateUp: "",
+          updating: true
         },
         () => {
           setTimeout(() => {
@@ -26,7 +28,8 @@ class App extends Component {
                   this.setState({
                     count: this.state.count + 1,
                     animateType: "move-up",
-                    startAnimateUp: ""
+                    startAnimateUp: "",
+                    updating: false
                   });
                 }, 250);
               }
@@ -38,11 +41,12 @@ class App extends Component {
   };
 
   decreamentHandler = () => {
-    if (this.state.count > 0) {
+    if (this.state.count > 0 && !this.state.updating) {
       this.setState(
         {
           animateType: "",
-          startAnimateUp: ""
+          startAnimateUp: "",
+          updating: true
         },
         () => {
           setTimeout(() => {
@@ -55,7 +59,8 @@ class App extends Component {
                   this.setState({
                     count: this.state.count - 1,
                     animateType: "move-down",
-                    startAnimateUp: ""
+                    startAnimateUp: "",
+                    updating: false
                   });
                 }, 250);
               }
